@@ -5,7 +5,11 @@
   "scripts": {
     "start": "ts-node src/server.ts",
     "dev": "nodemon src/server.ts",
-    "build": "rm -rf dist/ && tsc"
+    "build": "rm -rf dist/ && tsc",
+    "db-migrate-dev": "prisma migrate dev",
+    "db-migrate-deploy": "prisma migrate deploy",
+    "db-generate": "prisma generate",
+    "db-seed": "prisma db seed"
   },
   "repository": "git@github.com-VerasNp:VerasNp/bracelet.git",
   "author": "VerasNP <vitorveras01@gmail.com>",
