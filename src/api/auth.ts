@@ -1,6 +1,5 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
-import { v4 as uuidv4 } from 'uuid'
 import {
   findUserByEmail
 } from '../services/users'
@@ -30,11 +29,8 @@ router.post('/login', async (req, res, next) => {
       res.status(403)
       throw new Error('Invalid login credentials.')
     }
-    
-    const jti = uuidv4()
     const userAgent = req.get("user-agent")!
     const remoteAddr = req.socket.remoteAddress!
-
     const bracelet = Bracelet.make(existingUser.id, userAgent, remoteAddr)
     res.json({
       bracelet

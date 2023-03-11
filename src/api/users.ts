@@ -13,7 +13,7 @@ import {
 
 const router = express.Router()
 
-router.get('/', async (req, res, next) => {
+router.get('/', isAuthenticated, async (req, res, next) => {
   try {
     const users = await findAllUsers()
     res.json(users)
@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:slug', async (req, res, next) => {
+router.get('/:slug', isAuthenticated, async (req, res, next) => {
   try {
     const { slug } = req.params
     const user = await findUserBySlug(slug)
