@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
+import Bracelet from "./common/Bracelet"
 
 import ErrorResponse from './interfaces/ErrorResponse'
 
@@ -34,10 +35,14 @@ export const isAuthenticated = (
     throw new Error('🚫 Un-Authorized 🚫')
   }
   try {
+    // TODO: Arruma issu
+    const userAgent = req.get("user-agent")!
+    const remoteAddr = req.socket.remoteAddress!
     const token = authorization.split(' ')[1]
-    const payload = jwt.verify(token, `${process.env.JWT_ACCESS_SECRET}`)
+    const readableBracelet = Bracelet.read(token)
+    Bracelet.verify(readableBracelet, userAgent, remoteAddr)
     // @ts-ignore
-    req.payload = payload
+    req.bracelet = Bracelet.remake(readableBracelet, userAgent, remoteAddr)
   } catch (err: any) {
     res.status(401)
     if (err.name === 'TokenExpiredError') {
