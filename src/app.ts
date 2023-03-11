@@ -17,4 +17,8 @@ app.use('/', api)
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
 
+// 2 -Aqui poderiamos ter
+// app.use(Bracelet()) // options?:{}
+// veja em @/api/users.ts
+
 export default app

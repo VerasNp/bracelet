@@ -13,6 +13,11 @@ import {
 
 const router = express.Router()
 
+// 3 - Aqui poderíamos ter
+// router.get('/', bracelet, async (req, res, next) => {
+
+// e prontu. [começa a ler em @/middlewares.ts ]
+
 router.get('/', isAuthenticated, async (req, res, next) => {
   try {
     const users = await findAllUsers()

@@ -13,7 +13,7 @@ export const createUser = (user: any) => {
 
 export const findAllUsers = () => {
   return db.user.findMany({
-    where: { active: true, admin: false },
+    where: { active: true},
     select: {
       id: true,
       slug: true,
@@ -55,7 +55,6 @@ export const findUserBySlug = (slug: string) => {
     where: {
       slug,
       active: true,
-      admin: false,
     },
     select: {
       id: true,

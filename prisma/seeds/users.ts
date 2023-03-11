@@ -1,14 +1,14 @@
 import bcrypt from 'bcrypt'
 
 export const user = {
-  email: 'sosnoski.mao@gmail.com',
+  email: 'admin@gmail.com',
   password: bcrypt.hashSync('12345678', 12),
-  slug: 'fernando-sosnoski',
-  name: 'Fernando Sosnoski',
+  slug: 'aid-min',
+  name: 'Aedes Admin',
   role: 'Suporte Técnico',
-  firstName: 'Fernando',
-  avatar: '/images/fernando.jpg',
-  video: '/videos/fernando.mp4',
+  firstName: 'Aedes',
+  avatar: '/images/aedes.jpg',
+  video: '/videos/aedes.mp4',
   bio: `Consequat aliqua excepteur in aliquip commodo cillum qui laboris laborum minim eu exercitation. Proident do velit consectetur \
     aute laboris eiusmod consequat ex sint irure exercitation duis cupidatat. Adipisicing labore minim elit amet non \
     proident incididunt aliquip esse pariatur cillum reprehenderit. Amet exercitation tempor in adipisicing id irure \

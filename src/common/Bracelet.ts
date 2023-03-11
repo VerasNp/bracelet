@@ -31,7 +31,7 @@ class Bracelet {
       },
       `${process.env.JWT_SECRET}`,
       {
-        expiresIn: '5m',
+        expiresIn: '55m',
       }
     )
   }
@@ -48,19 +48,20 @@ class Bracelet {
       },
       `${process.env.JWT_SECRET}`,
       {
-        expiresIn: '5m',
+        expiresIn: '55m',
       }
     )
   }
 
   read(bracelet: string) {
     return <IBracelet>jwt.verify(bracelet, `${process.env.JWT_SECRET}`)
+    // TODO: Precisamos excluir a entry do array caso timedout
+    // mas non sei como, pq se timedout, o jwt acima ja throw error
   }
 
   castOut(bracelet: string) {
     const readableBracelet = this.read(bracelet)
     const index = this.whitelist.indexOf(readableBracelet.jti)
-    console.log(index)
     if (index === -1) throw new Error('Quenhe tu')
 
     delete this.whitelist[index]
